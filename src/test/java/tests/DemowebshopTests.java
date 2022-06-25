@@ -87,21 +87,20 @@ public class DemowebshopTests {
     }
 
     @Test
-    @Disabled
     @DisplayName("Adding a product to the cart (API + UI)")
-    void addProductApiTest() {
+    void addProductToCartTest() {
         step("Get cookie by api and set it to browser", () -> {
             given()
                     .filter(withCustomTemplates())
-                    .contentType("application/json")
+                    .contentType("application/x-www-form-urlencoded")
                     .log().all()
                     .when()
                     .post("/addproducttocart/catalog/31/1/1")
                     .then()
                     .log().all()
                     .statusCode(200)
-                    .body("success", is("true"))
-                    .body("message", is("The product has been added to your cart"));
+                    .body("success", is(true))
+                    .body("message", is("The product has been added to your <a href=\"/cart\">shopping cart</a>"));
         });
     }
 }
