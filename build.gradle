@@ -32,6 +32,7 @@ dependencies {
             "io.qameta.allure:allure-selenide:$allureVersion",
             "io.rest-assured:rest-assured:5.1.0",
             "io.qameta.allure:allure-rest-assured:$allureVersion",
+            'org.aeonbits.owner:owner:1.0.12',
             "org.junit.jupiter:junit-jupiter:5.8.2",
             "org.slf4j:slf4j-simple:1.7.36"
     )

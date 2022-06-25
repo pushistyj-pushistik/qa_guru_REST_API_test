@@ -1,29 +1,37 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import config.App;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
+import static helpers.CustomApiListener.withCustomTemplates;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
 
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Cookie;
 
 
 public class DemowebshopTests {
-    static String login = "qaguru@qa.guru",
-            password = "qaguru@qa.guru1",
-            authCookieName = "NOPCOMMERCE.AUTH";
+    static String login,
+            password,
+            authCookieName = "NOPCOMMERCE.AUTH"; //перенести в owner?
 
     @BeforeAll
     static void configure() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
-        Configuration.baseUrl = "http://demowebshop.tricentis.com";
-        RestAssured.baseURI = "http://demowebshop.tricentis.com";
+        RestAssured.baseURI = App.config.baseUri();
+        Configuration.baseUrl = App.config.baseUrl();
+
+        login = App.config.userLogin();
+        password = App.config.userPassword();
     }
 
     @AfterEach
@@ -52,6 +60,7 @@ public class DemowebshopTests {
     void loginWithApiTest() {
         step("Get cookie by api and set it to browser", () -> {
             String authCookieValue = given()
+                    .filter(withCustomTemplates())
                     .contentType("application/x-www-form-urlencoded")
                     .formParam("Email", login)
                     .formParam("Password", password)
@@ -75,5 +84,24 @@ public class DemowebshopTests {
                 open(""));
         step("Verify successful authorization", () ->
                 $(".account").shouldHave(text(login)));
+    }
+
+    @Test
+    @Disabled
+    @DisplayName("Adding a product to the cart (API + UI)")
+    void addProductApiTest() {
+        step("Get cookie by api and set it to browser", () -> {
+            given()
+                    .filter(withCustomTemplates())
+                    .contentType("application/json")
+                    .log().all()
+                    .when()
+                    .post("/addproducttocart/catalog/31/1/1")
+                    .then()
+                    .log().all()
+                    .statusCode(200)
+                    .body("success", is("true"))
+                    .body("message", is("The product has been added to your cart"));
+        });
     }
 }
