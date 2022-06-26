@@ -1,8 +1,6 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import config.App;
-import io.restassured.RestAssured;
 import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.text;
@@ -18,19 +16,9 @@ import org.openqa.selenium.Cookie;
 
 public class DemowebshopTests {
 
-    static String login,
-            password,
-            authCookieName = "NOPCOMMERCE.AUTH";
-
-    @BeforeAll
-    static void configure() {
-
-        RestAssured.baseURI = App.config.baseURI();
-        Configuration.baseUrl = App.config.baseUrl();
-
-        login = App.config.login();
-        password = App.config.password();
-    }
+    String login = App.config.login();
+    String password = App.config.password();
+    String authCookieName = "NOPCOMMERCE.AUTH";
 
     @Test
     @DisplayName("Successful authorization to some demowebshop (UI)")

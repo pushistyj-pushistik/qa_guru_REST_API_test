@@ -10,7 +10,7 @@ repositories {
     mavenCentral()
 }
 
-def allureVersion = "2.17.3"
+def allureVersion = '2.18.1'
 
 allure {
     report {
@@ -28,9 +28,9 @@ allure {
 
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:6.5.2",
+            'com.codeborne:selenide:6.6.3',
             "io.qameta.allure:allure-selenide:$allureVersion",
-            "io.rest-assured:rest-assured:5.1.0",
+            'io.rest-assured:rest-assured:5.1.1',
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             'org.aeonbits.owner:owner:1.0.12',
             "org.junit.jupiter:junit-jupiter:5.8.2",
