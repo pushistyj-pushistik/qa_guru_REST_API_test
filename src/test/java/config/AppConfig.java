@@ -3,8 +3,7 @@ package config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:config/demowebshop/app.properties",
-        "classpath:config/demowebshop/remote.properties",})
+        "classpath:config/demowebshop/app.properties"})
 public interface AppConfig extends Config {
 
     @Key("baseUrl")
@@ -13,18 +12,24 @@ public interface AppConfig extends Config {
     @Key("baseURI")
     String baseURI();
 
-    @Key("login")
-    String login();
+    @Key("userLogin")
+    String userLogin();
 
-    @Key("password")
-    String password();
+    @Key("userPassword")
+    String userPassword();
 
     @Key("selenoidUrl")
     String selenoidUrl();
 
-    @Key("selenoidlogin")
-    String selenoidlogin();
+    @Key("selenoidLogin")
+    String selenoidLogin();
 
-    @Key("selenoidpassword")
-    String selenoidpassword();
+    @Key("selenoidPassword")
+    String selenoidPassword();
+
+    @Key("browser")
+    String browser();
+
+    @Key("browserVersion")
+    String browserVersion();
 }

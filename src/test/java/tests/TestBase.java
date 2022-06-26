@@ -19,11 +19,13 @@ public class TestBase {
 
         RestAssured.baseURI = App.config.baseURI();
         Configuration.baseUrl = App.config.baseUrl();
+        Configuration.browser = App.config.browser();
+        Configuration.browser = App.config.browserVersion();
 
         String selenoidUrl = App.config.selenoidUrl();
             if (selenoidUrl != null) {
                 step("Remote web driver setup", () -> {
-                Configuration.remote = "https://" + App.config.selenoidlogin() + ":" + App.config.selenoidpassword() + "@selenoid.autotests.cloud/wd/hub";
+                Configuration.remote = "https://" + App.config.selenoidLogin() + ":" + App.config.selenoidPassword() + "@selenoid.autotests.cloud/wd/hub";
         });
       }
     }

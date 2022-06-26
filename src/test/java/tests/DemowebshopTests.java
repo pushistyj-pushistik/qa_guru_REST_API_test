@@ -16,8 +16,8 @@ import org.openqa.selenium.Cookie;
 
 public class DemowebshopTests {
 
-    String login = App.config.login();
-    String password = App.config.password();
+    String login = App.config.userLogin();
+    String password = App.config.userPassword();
     String authCookieName = "NOPCOMMERCE.AUTH";
 
     @Test
