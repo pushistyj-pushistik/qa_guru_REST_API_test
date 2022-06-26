@@ -20,7 +20,7 @@ public class TestBase {
         RestAssured.baseURI = App.config.baseURI();
         Configuration.baseUrl = App.config.baseUrl();
         Configuration.browser = App.config.browser();
-        Configuration.browser = App.config.browserVersion();
+        Configuration.browserVersion = App.config.browserVersion();
 
         String selenoidUrl = App.config.selenoidUrl();
             if (selenoidUrl != null) {

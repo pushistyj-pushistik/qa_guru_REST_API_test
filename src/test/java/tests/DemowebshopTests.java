@@ -1,6 +1,8 @@
 package tests;
 
+import com.codeborne.selenide.Configuration;
 import config.App;
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.text;
@@ -14,7 +16,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Cookie;
 
 
-public class DemowebshopTests {
+public class DemowebshopTests extends TestBase {
 
     String login = App.config.userLogin();
     String password = App.config.userPassword();
