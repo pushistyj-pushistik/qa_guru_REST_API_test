@@ -20,7 +20,7 @@ public class TestBase {
 
       if (selenoidUrl != null) {
         step("Remote web driver setup", () -> {
-            Configuration.remote = "https://" + App.config.selenoidlogin() + ":" + App.config.selenoidlogin() + "@selenoid.autotests.cloud/wd/hub";
+            Configuration.remote = "https://" + App.config.selenoidlogin() + ":" + App.config.selenoidpassword() + "@selenoid.autotests.cloud/wd/hub";
 
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("enableVNC", true);
