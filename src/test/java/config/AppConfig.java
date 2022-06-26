@@ -9,12 +9,12 @@ public interface AppConfig extends Config {
     @Key("baseUrl")
     String baseUrl();
 
-    @Key("baseUri")
+    @Key("baseURI")
     String baseURI();
 
-    @Key("userLogin")
+    @Key("login")
     String login();
 
-    @Key("userPassword")
+    @Key("password")
     String password();
 }
