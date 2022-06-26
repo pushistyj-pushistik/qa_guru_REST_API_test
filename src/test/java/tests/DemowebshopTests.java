@@ -25,11 +25,11 @@ public class DemowebshopTests {
     @BeforeAll
     static void configure() {
 
-        RestAssured.baseURI = App.config.baseUri();
+        RestAssured.baseURI = App.config.baseURI();
         Configuration.baseUrl = App.config.baseUrl();
 
-        login = App.config.userLogin();
-        password = App.config.userPassword();
+        login = App.config.login();
+        password = App.config.password();
     }
 
     @Test
