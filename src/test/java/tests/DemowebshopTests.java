@@ -1,8 +1,6 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import config.App;
-import io.restassured.RestAssured;
 import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.text;
@@ -70,7 +68,7 @@ public class DemowebshopTests extends TestBase {
     }
 
     @Test
-    @DisplayName("Adding a product to the cart (API + UI1)")
+    @DisplayName("Adding a product to the cart (API + UI)")
     void addProductToCartTest() {
         String authCookieValue = given()
                 .filter(withCustomTemplates())
