@@ -15,7 +15,7 @@ import static io.qameta.allure.Allure.step;
 
 public class TestBase {
     @BeforeAll
-    public void beforeAll() {
+    static void beforeAll() {
     String selenoidUrl = App.config.selenoidUrl();
 
       if (selenoidUrl != null) {
