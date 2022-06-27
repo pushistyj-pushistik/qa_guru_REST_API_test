@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.App;
 import helpers.AllureAttachments;
@@ -9,6 +10,7 @@ import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static io.qameta.allure.Allure.step;
@@ -28,6 +30,10 @@ public class TestBase {
                 Configuration.remote = "https://" + App.config.selenoidLogin() + ":" + App.config.selenoidPassword() + "@selenoid.autotests.cloud/wd/hub";
         });
       }
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+        Configuration.browserCapabilities = capabilities;
     }
 
     @BeforeEach
@@ -37,10 +43,10 @@ public class TestBase {
 
     @AfterEach
     void afterEach() {
-        AllureAttachments.screenshotAs("Last screenshot");
+        AllureAttachments.screenshotAs("Screenshot");
         AllureAttachments.pageSource();
         AllureAttachments.browserConsoleLogs();
         AllureAttachments.addVideo();
-        closeWebDriver();
+        Selenide.closeWebDriver();
     }
 }
