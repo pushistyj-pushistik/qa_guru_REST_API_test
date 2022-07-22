@@ -17,4 +17,8 @@ public class Specs {
     public static ResponseSpecification responseSpec = new ResponseSpecBuilder()
             .expectStatusCode(200)
             .build();
+
+    public static ResponseSpecification postResponseSpec = new ResponseSpecBuilder()
+            .expectStatusCode(201)
+            .build();
 }

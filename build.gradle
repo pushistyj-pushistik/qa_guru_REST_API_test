@@ -38,9 +38,7 @@ dependencies {
             'org.aeonbits.owner:owner:1.0.12',
             "org.junit.jupiter:junit-jupiter:5.8.2",
             "org.slf4j:slf4j-simple:1.7.36",
-            'com.fasterxml.jackson.core:jackson-databind:2.13.3',
-            'com.fasterxml.jackson.core:jackson-core:2.13.3',
-            'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
+            'com.fasterxml.jackson.core:jackson-databind:2.13.3'
     )
 }
 compileTestJava {
